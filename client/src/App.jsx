@@ -265,12 +265,20 @@ function App() {
         setInCall(false);
     });
   };
+  
+  const iceConfig = {
+    iceServers: [
+      { urls: 'stun:stun.l.google.com:19302' },
+      { urls: 'stun:global.stun.twilio.com:3478' }
+    ]
+  };
 
   const createPeer = (userToSignal, callerID, stream) => {
     const peer = new SimplePeer({ 
         initiator: true, 
-        trickle: false, // ✅ 4. แก้ typo: trickles -> trickle
-        stream 
+        trickle: false, 
+        stream,
+        config: iceConfig // ✅ เพิ่มบรรทัดนี้
     });
     peer.on("signal", signal => {
       socket.emit("sending_signal", { userToSignal, callerID, signal });
@@ -281,8 +289,9 @@ function App() {
   const addPeer = (incomingSignal, callerID, stream) => {
     const peer = new SimplePeer({ 
         initiator: false, 
-        trickle: false, // ✅ 4. แก้ typo: trickles -> trickle
-        stream 
+        trickle: false, 
+        stream,
+        config: iceConfig // ✅ เพิ่มบรรทัดนี้
     });
     peer.on("signal", signal => {
       socket.emit("returning_signal", { signal, callerID });
