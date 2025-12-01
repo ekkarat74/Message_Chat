@@ -75,7 +75,7 @@ function App() {
   const fileInputRef = useRef(null);
   const profileInputRef = useRef(null);
   
-  const notificationAudio = new Audio('/notification.mp3'); 
+  //const notificationAudio = new Audio('/notification.mp3'); 
 
   // --- Auth & Room Functions ---
   const handleAuth = async () => {
@@ -334,8 +334,7 @@ function App() {
     const handleReceiveMsg = (data) => {
         setMessageList((list) => [...list, data]);
         setTypingStatus("");
-        if(data.author !== username) notificationAudio.play().catch(e => {});
-    };
+      };
     const handleMsgDeleted = (id) => setMessageList((list) => list.filter(m => m._id !== id));
     const handleRoomUsers = (users) => setUsersInRoom(users);
 
