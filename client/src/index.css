@@ -264,17 +264,44 @@ button:hover {
 
 /* --- Call Button & Video Grid --- */
 .call-btn {
-    background: #10b981;
-    color: white;
-    border-radius: 20px;
-    padding: 6px 16px;
-    font-size: 13px;
-    display: flex; align-items: center; gap: 5px;
-    box-shadow: none; width: auto; margin: 0;
+  background: #10b981; /* สีเขียว */
+  color: white;
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-size: 13px;
+  display: flex; 
+  align-items: center; 
+  gap: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  width: auto; 
+  margin: 0;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s;
+  /* เพิ่ม z-index เพื่อให้มั่นใจว่าอยู่ชั้นบนสุด */
+  position: relative;
+  z-index: 100;
+}
+
+.call-btn.active {
+  background: #ef4444; /* สีแดงตอนวางสาย */
+}
+
+.call-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* เพิ่มการแสดงผลบนหน้าจอมือถือ (เผื่อเว็บจริงเปิดบนจอเล็กแล้วปุ่มหาย) */
+@media (max-width: 600px) {
+  .header-actions {
+    gap: 5px;
   }
-  .call-btn.active {
-    background: #ef4444; 
+  .call-btn {
+    padding: 6px 10px;
+    font-size: 12px;
   }
+}
   
   .video-grid-overlay {
     position: sticky;
