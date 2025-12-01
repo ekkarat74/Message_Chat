@@ -15,11 +15,7 @@
     "events": "^3.3.0",
     "process": "^0.11.10",
     "stream-browserify": "^3.0.0",
-<<<<<<< HEAD
     "util": "^0.12.5",
     "vite-plugin-node-polyfills": "^0.24.0"
-=======
-    "util": "^0.12.5"
->>>>>>> 123d7fb08b2a9e964ff646405b8ab2133148ba11
   }
 }
